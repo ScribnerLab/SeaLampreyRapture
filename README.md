@@ -16,12 +16,17 @@ version 3.5.1 in Windows 10
     library(devtools)
     install_github("ScribnerLab/SeaLampreyRapture")
 
-### Scripts in /analysis \*\* Under development \*\* 1. buildRDA.R: Build RDA file 2. installPackages.R: Install required packages 3.
+### Scripts in /analysis (Under development)
+
+1.  buildRDA.R: Build RDA file
+2.  installPackages.R: Install required packages
+3.  
 
 ### Contact
 
-Nick M. Sard <nicholas.sard@oswego.edu>
-<https://www.oswego.edu/biological-sciences/content/nicholas-m-sard>
+Nick M. Sard  
+<nicholas.sard@oswego.edu>  
+www.oswego.edu/biological-sciences/content/nicholas-m-sard
 
 Jared J. Homola  
 <jaredhomola20@gmail.com>  
