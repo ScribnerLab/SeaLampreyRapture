@@ -4,11 +4,13 @@
 
 ### Load required libraries
 library(VariantAnnotation)
+library(vcfR)
 
 ### Load data
-allLoci <- readVcf("./extData/lamprey_freebayes.targets.filtered.indep_ind.vcf")
+allLoci.vcf <- readVcf("./extData/lamprey_freebayes.targets.filtered.indep_ind.vcf")
+allLoci.vcfR <- read.vcfR("./extData/lamprey_freebayes.targets.filtered.indep_ind.vcf")
 ageNames <- read.delim("./extData/samplenames_age_specific.csv", sep = ",", header = FALSE)
 
 ### Save as .rda file
-save(allLoci, ageNames, file = "./data/SeaLampreyRapture.rda")
+save(allLoci.vcf, allLoci.vcfR, ageNames, file = "./data/SeaLampreyRapture.rda")
 
