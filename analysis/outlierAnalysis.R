@@ -2,33 +2,31 @@
 ####  Outlier analysis of sea lamprey RAPTURE data using OutFLANK  ####
 #######################################################################
 
-### Load packages
-
+### Load packages and data
 library(OutFLANK)
 library(tidyverse)
 library(ggrepel)
 library(VariantAnnotation)
 library(snpStats)
+library(SeaLampreyRapture)
 
-setwd("G:/My Drive/Side projects/Lamprey/Lamprey_Vcfs_InitialFiltering_SRS_101018")
+data(SeaLampreyRapture)
 
 ### Convert files from VCF to 0,1,2,9 format
-
-vcf <- readVcf("lamprey_freebayes.targets.filtered.indep_ind.vcf")
-dat <- genotypeToSnpMatrix(vcf, uncertain=FALSE)
+dat <- genotypeToSnpMatrix(allLoci, uncertain=FALSE)
 
 dat1 <- as.data.frame(dat$genotypes@.Data)
-write.csv(dat1, "data1temp.csv")
-dat1 <- read.csv("data1temp.csv") ## Writing then re-reading the csv converts from raw --> int
 
-## Convert from VCF alleles representation to the count of reference alleles (9 = no data)
+write.csv(dat1, "./tmp/data1temp.csv")
+dat1 <- read.csv("./tmp/data1temp.csv") ## Writing then re-reading the csv converts from raw --> int
+
+## Convert from VCF allele representation to the count of reference alleles (9 = no data)
 dat1[dat1 == 0] <- 9
 dat1[dat1 == 1] <- 0
 dat1[dat1 == 2] <- 1
 dat1[dat1 == 3] <- 2
 
 ## Read in age-specific population names
-ageNames <- read.delim("samplenames_age_specific.csv", sep = ",", header = FALSE)
 dat1$pop <- ageNames$V1 ## Assign populations to each individual, stored within genind object
 
 ## Subset to only retain largest year class from DCJ and SC
@@ -104,5 +102,5 @@ outlierLoci <- locinames[outliers.num]
 outlierLoci <- substr(outlierLoci,1,nchar(outlierLoci)-4) # The names of outlier loci
 outlierLoci.df <- as.data.frame(outlierLoci)
 
-write.csv(outlierLoci, "outlierLoci.csv")
+#write.csv(outlierLoci, "outlierLoci.csv")
 

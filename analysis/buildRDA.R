@@ -3,11 +3,12 @@
 ############################################
 
 ### Load required libraries
-library(vcfR)
+library(VariantAnnotation)
 
 ### Load data
-allLoci <- read.vcfR("G:/My Drive/Side projects/Lamprey/Lamprey_Vcfs_InitialFiltering_SRS_101018/lamprey_freebayes.targets.filtered.indep_ind.vcf")
+allLoci <- readVcf("./extData/lamprey_freebayes.targets.filtered.indep_ind.vcf")
+ageNames <- read.delim("./extData/samplenames_age_specific.csv", sep = ",", header = FALSE)
 
 ### Save as .rda file
-save(allLoci, file = "./data/WFUrbanAdaptation.rda")
+save(allLoci, ageNames, file = "./data/SeaLampreyRapture.rda")
 
