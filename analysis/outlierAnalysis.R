@@ -13,7 +13,7 @@ library(SeaLampreyRapture)
 data(SeaLampreyRapture)
 
 ### Convert files from VCF to 0,1,2,9 format
-dat <- genotypeToSnpMatrix(allLoci, uncertain=FALSE)
+dat <- genotypeToSnpMatrix(allLoci.vcf, uncertain=FALSE)
 
 dat1 <- as.data.frame(dat$genotypes@.Data)
 
