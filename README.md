@@ -20,7 +20,12 @@ version 3.5.1 in Windows 10
 
 1.  buildRDA.R: Build RDA file
 2.  installPackages.R: Install required packages
-3.  
+3.  DAPC: Discriminant analysis of principal components for
+    age-structured data
+4.  geneticDiversityFst: Genetic diversity and Fst measures (overall and
+    age-structured)
+5.  outlierAnalysis: Identification of loci with evidence of selection
+    based on OutFLANK analysis
 
 ### Contact
 
