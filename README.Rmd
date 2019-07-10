@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 # Sea Lamprey Rapture
 
-SeaLampreyRapture is a research compendium that brings together the data and analyses associated with Sard et al. (in review). R scripts are provided in analysis/, human-readable data in extData/, and R-readable data in an .rda file in data/. 
+SeaLampreyRapture is a research compendium that brings together the data and analyses associated with Sard et al. (in review). R analysis scripts are provided in analysis/, R source scripts are in src/, human-readable data in extData/, and R-readable data in an .rda file in data/. 
 
 Note: All analyses originally conducted and package built using R version 3.5.1 in Windows 10
 
@@ -27,9 +27,10 @@ install_github("ScribnerLab/SeaLampreyRapture")
 ### Scripts in /analysis (Under development)
 1. buildRDA.R: Build RDA file
 2. installPackages.R: Install required packages
-3. DAPC: Discriminant analysis of principal components for age-structured data
-4. geneticDiversityFst: Genetic diversity and Fst measures (overall and age-structured)
-5. outlierAnalysis: Identification of loci with evidence of selection based on OutFLANK analysis
+3. DAPC.R: Discriminant analysis of principal components for age-structured data
+4. geneticDiversityFst.R: Genetic diversity and Fst measures (overall and age-structured)
+5. outlierAnalysis.R: Identification of loci with evidence of selection based on OutFLANK analysis
+6. 
 
 
 ### Contact
