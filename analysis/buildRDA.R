@@ -28,6 +28,10 @@ targets.chrpos <- read.table("./extData/Targets.chrpos",
                              sep = "\t" ,
                              header = TRUE)
 
+targetDensity <- read.table("./extData/Lamprey_TargetDensity.txt",
+                            sep = "\t",
+                            header = TRUE)
+
 
 ### Save as .rda file
 save(
@@ -38,6 +42,7 @@ save(
   appendixLoci,
   onTarget_readCount,
   targets.chrpos,
+  targetDensity,
   file = "./data/SeaLampreyRapture.rda"
 )
 
