@@ -99,9 +99,25 @@ p + ggtitle("") +
 
 
 ### Target density {#TargetDensity}
+The mean density of targeted loci across these scaffolds was 4.02 RAD loci per mega-base (SD = 1.30) 
 
 ```{r, message = FALSE, warning = FALSE, fig.align = "center"}
-## Need input file from Seth, I think.
+data <- subset(targetDensity, chr_length > 10000000)
+mn <- mean(data$density)
+sd <- max(data$density)
+
+p <- ggplot(data, aes(x=density)) +
+  geom_histogram(fill="deepskyblue3", color = "black", binwidth = 0.25) +
+  xlim(c(-1,10)) +
+  geom_vline(xintercept = mn, linetype = "dashed")
+
+p + ggtitle("") +
+  xlab("Mean Number of Target RAD Loci Per Megabase") + ylab("Scaffold Count") +
+  theme_linedraw()+
+  theme(legend.position="none",
+        text = element_text(size=14),
+        axis.text.x = element_text(angle=0, hjust=1))
+
 ```
 
 ### Chromosome plots {#Chromo}
