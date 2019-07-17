@@ -42,6 +42,8 @@ install_github("ScribnerLab/SeaLampreyRapture")
 ### Scripts in /analysis/simulations
 1. 
 
+### Data in /extData
+
 ### Contact
 Nick M. Sard  
 nicholas.sard@oswego.edu  

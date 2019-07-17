@@ -91,6 +91,8 @@ gd.tib <- Hobs.tib %>%
   left_join(Fis.tib) %>%
   left_join(MAF.tib)
 
+#write.csv(gd.tib, "gd.tib.csv")
+
 #### Pairwise Fsts for all unrelated lamprey ####
 pairwise.fsts <- pairwise.fst(dat.genind)
 

@@ -14,7 +14,7 @@ data(SeaLampreyRapture)
 dat.genind <- vcfR2genind(allLoci.vcfR, sep = "[|/]") ## Create genind object
 
 ### Assign population and age class names to genind file
-dat.genind@pop <- agePops$V1
+dat.genind@pop <- indPops$Age
 
 ###### Perform discriminant analysis of principal components ######
 dapc.all <- dapc(dat.genind, var.contrib = TRUE, scale = FALSE, n.pca = 100, n.da = nPop(dat.genind) - 1)

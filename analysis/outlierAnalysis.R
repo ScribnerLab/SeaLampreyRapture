@@ -27,7 +27,7 @@ dat1[dat1 == 2] <- 1
 dat1[dat1 == 3] <- 2
 
 ## Read in age-specific population names
-dat1$pop <- ageNames$V1 ## Assign populations to each individual, stored within genind object
+dat1$pop <- indPops$Age ## Assign populations to each individual, stored within genind object
 
 ## Subset to only retain largest year class from DCJ and SC
 dat2 <- filter(dat1, pop %in% c("BR", "CARP", "DCJ-2", "SC-2", "SM"))

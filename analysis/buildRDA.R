@@ -12,11 +12,9 @@ allLoci.vcf <- readVcf("./extData/lamprey_freebayes.targetloci.filtered.subsampl
 
 allLoci.vcfR <- read.vcfR("./extData/lamprey_freebayes.targetloci.filtered.subsampled.vcf")
 
-agePops <-  read.delim("./extData/indNames.age.csv",
+indPops <-  read.delim("./extData/indNames.csv",
                        sep = ",",
                        header = FALSE)
-
-indPops <- read.delim("./extData/indNames.csv", sep = ",", header = FALSE)
 
 appendixLoci <- read.delim("./extData/Loci_Appendix_112918.txt",
                            sep = "\t",
@@ -73,7 +71,6 @@ alf.dist <- read.table("./extData/alf.dist.txt",
 save(
   allLoci.vcf,
   allLoci.vcfR,
-  agePops,
   indPops,
   appendixLoci,
   onTarget_readCount,
