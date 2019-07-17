@@ -3,8 +3,8 @@ title: "Sea lamprey RAPTURE dataset characterization"
 author: "Sard et al. 2019"
 date: "July 2019"
 output:
-  md_document: default
   pdf_document: default
+  md_document: default
   html_document: default
 ---
 

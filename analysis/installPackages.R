@@ -1,6 +1,6 @@
 #########################################################
 #####         Install packages needed for           #####
-#####          WFUrbanAdaptation analyses           #####
+#####          SeaLampreyRapture analyses           #####
 #########################################################
 
 list.of.packages <- c("tidyverse",

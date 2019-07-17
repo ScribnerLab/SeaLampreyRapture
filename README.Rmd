@@ -5,6 +5,7 @@ date: "June 29, 2019"
 output:
   md_document: default
 html_document: default
+pdf_document: default
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -24,14 +25,22 @@ library(devtools)
 install_github("ScribnerLab/SeaLampreyRapture")
 ```
 
-### Scripts in /analysis (Under development)
+### Scripts in /analysis
 1. buildRDA.R: Build RDA file
 2. installPackages.R: Install required packages
 3. DAPC.R: Discriminant analysis of principal components for age-structured data
 4. geneticDiversityFst.R: Genetic diversity and Fst measures (overall and age-structured)
 5. outlierAnalysis.R: Identification of loci with evidence of selection based on OutFLANK analysis
-6. 
 
+### Scripts in /analysis/pedigrees
+1. /Real pedigree data/exact.tests.R: Perform Fisher's exact tests on results data - DONE
+2. /Real pedigree data/brd.matrix.figure.R: Mate pair matrix of sampled offspring - DONE
+3. /Real pedigree data/dck_2_location.heat.map.R: NEED HELP
+4. /Real pedigree data/dck_2_location.randomization.all.ages.R: NEED HELP
+5. /Read pedigree data/pedigree.stats.R: Number of successful parents, half-sib dyads, and full-sib dyads with reproductive success & coancestry.
+
+### Scripts in /analysis/simulations
+1. 
 
 ### Contact
 Nick M. Sard  
