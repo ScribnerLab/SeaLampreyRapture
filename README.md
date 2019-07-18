@@ -16,7 +16,7 @@ version 3.5.1 in Windows 10
     library(devtools)
     install_github("ScribnerLab/SeaLampreyRapture")
 
-### Scripts in /analysis (Under development)
+### Scripts in /analysis
 
 1.  buildRDA.R: Build RDA file
 2.  installPackages.R: Install required packages
@@ -26,7 +26,54 @@ version 3.5.1 in Windows 10
     and age-structured)
 5.  outlierAnalysis.R: Identification of loci with evidence of selection
     based on OutFLANK analysis
-6.  
+
+### Scripts in /analysis/pedigrees/Real pedigree data/
+
+1.  /Real pedigree data/exact.tests.R: Perform Fisher's exact tests on
+    results data
+2.  /Real pedigree data/brd.matrix.figure.R: Mate pair matrix of sampled
+    offspring
+3.  /Real pedigree data/dck\_2\_location.heat.map.R: NEED HELP
+4.  /Real pedigree data/dck\_2\_location.randomization.all.ages.R: NEED
+    HELP
+5.  /Read pedigree data/pedigree.stats.R: Number of successful parents,
+    half-sib dyads, and full-sib dyads with reproductive success &
+    coancestry.
+
+### Scripts in /analysis/pedigrees/Simulations/
+
+1.  /Create simulations/colony.simulations.genetic.R: Create an input
+    file for the COLONY simulation.
+2.  /Linux colony runs/source.scripts/post.processing.R: Compare a known
+    pedigree to the inferred from COLONY
+3.  /Linux colony runs/source.scripts/summarize.conf.mat.R: Collate all
+    output files from colony simulations into a single file \*\*\*\*
+4.  /Linux colony runs/source.scripts/summarize.output.R: Collate all
+    output files from colony simulations into a single file \*\*\*\*
+
+### Data in /extData
+
+1.  alf.dist: Allele frequencies
+2.  best.config.dck.age.1: Best configuration file for Duffins Creek,
+    age 1 sea lamprey
+3.  best.config.dck.age.2: Best configuration file for Duffins Creek,
+    age 2 sea lamprey
+4.  best.config.dck.age.3: Best configuration file for Duffins Creek,
+    age 3 sea lamprey
+5.  best.config.scr.age.2: Best configuration file for St. Clair River,
+    age 2 sea lamprey
+6.  best.config.scr.age.3: Best configuration file for St. Clair River,
+    age 3 sea lamprey
+7.  database\_v2: Phenotype, location, and barcode information for each
+    sea lamprey sample
+8.  indNames: Population and cohort assignments for each sea lamprey in
+    down-sampled dataset
+9.  lamprey\_freebayes.targetloci.filtered.subsampled.vcf: Down-sampled
+    SNP dataset to include only unrelated individuals 10:
+    Lamprey\_TargetDensity: Target density of all sequenced loci 11:
+    Loci\_Appendix\_112918: Genetic diversity information for all
+    sequenced loci 12: R\_OT: On target rates for all loci 13:
+    targets.chrpos: Chromosome mapping information
 
 ### Contact
 
