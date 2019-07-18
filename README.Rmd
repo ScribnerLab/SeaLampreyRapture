@@ -40,7 +40,7 @@ install_github("ScribnerLab/SeaLampreyRapture")
 5. /Read pedigree data/pedigree.stats.R: Number of successful parents, half-sib dyads, and full-sib dyads with reproductive success & coancestry.
 
 ### Scripts in /analysis/simulations
-1. 
+1. /Create simulations/colony.simulations.genetic.R: Create an input file for the COLONY simulation. 
 
 ### Data in /extData
 

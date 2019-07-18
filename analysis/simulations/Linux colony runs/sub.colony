@@ -1,0 +1,38 @@
+#!/bin/sh
+#SBATCH --job-name=10100
+#SBATCH -C intel18
+#SBATCH -N 1 -c 1
+#SBATCH -t 4:00:00
+#SBATCH --mem 1G
+
+### change to the working directory where your code is located
+cd <Your Favorite Directory>
+
+### load necessary modules, e.g.
+module load GNU/5.4.0-2.26
+module load OpenMPI/1.10.3
+module load R/3.3.1
+
+### making a folder, moving into it, cp over the sim, and change its name
+mkdir folder.${SLURM_ARRAY_TASK_ID}
+cd folder.${SLURM_ARRAY_TASK_ID}
+cp ../dat.files/colony2_sim_${SLURM_ARRAY_TASK_ID}.Dat .
+mv colony2_sim_${SLURM_ARRAY_TASK_ID}.Dat colony2.dat
+
+### running colony
+colony
+
+### doing some postprocessing of the data
+../source.scripts/adj.ped.format.sh
+../source.scripts/post.processing.R
+
+#moving files of interest to outfiles
+mv *Ne* ../outfiles/Ne.${SLURM_ARRAY_TASK_ID}.txt
+mv output.txt ../outfiles/output.${SLURM_ARRAY_TASK_ID}
+mv conf.mat.txt ../outfiles/conf.mat.${SLURM_ARRAY_TASK_ID}
+mv best.config.txt ../outfiles/BestConfig.${SLURM_ARRAY_TASK_ID}.txt
+cd ..
+rm -fr folder.${SLURM_ARRAY_TASK_ID}
+
+#getting info on job
+scontrol show job ${SLURM_JOB_ID}

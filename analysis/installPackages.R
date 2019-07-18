@@ -9,6 +9,7 @@ list.of.packages <- c("tidyverse",
                       "devtools",
                       "adegenet",
                       "hierfstat",
+                      "grid",
                       "gridExtra",
                       "ggthemes")
 

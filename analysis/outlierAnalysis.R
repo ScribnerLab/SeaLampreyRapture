@@ -27,10 +27,11 @@ dat1[dat1 == 2] <- 1
 dat1[dat1 == 3] <- 2
 
 ## Read in age-specific population names
-dat1$pop <- indPops$Age ## Assign populations to each individual, stored within genind object
+dat1$pop <- indPops$Pop ## Assign populations to each individual, stored within genind object
 
 ## Subset to only retain largest year class from DCJ and SC
-dat2 <- filter(dat1, pop %in% c("BR", "CARP", "DCJ-2", "SC-2", "SM"))
+#dat2 <- filter(dat1, pop %in% c("BR", "CARP", "DCJ-2", "SC-3", "SM"))
+dat2 <- dat1
 
 ##### Build input files ######
 genotype <- dat2[, 2:(ncol(dat2)-1)]
@@ -39,18 +40,24 @@ locinames <- as.character(colnames(genotype)) # vector of name of loci (actually
 FstDataFrame1 <- MakeDiploidFSTMat(genotype, locinames, ind)
 
 ##### Perform test #####
-out_trim <- OutFLANK(FstDataFrame1, NumberOfSamples=111, qthreshold = 0.05, Hmin = 0.1)
+out_trim <- OutFLANK(FstDataFrame1, NumberOfSamples=140, qthreshold = 0.1, Hmin = 0.1)
 
 P1 <- pOutlierFinderChiSqNoCorr(FstDataFrame1, Fstbar = out_trim$FSTNoCorrbar,
-                                dfInferred = out_trim$dfInferred, qthreshold = 0.05, Hmin=0.1)
+                                dfInferred = out_trim$dfInferred, qthreshold = 0.1, Hmin=0.1)
 
 ## Organize dataframe
+substrRight <- function(x, n){
+  substr(x, nchar(x)-n+1, nchar(x))
+}
+
 P1$Index <- as.integer(rownames(P1))
-P1$label <- substr(P1$LocusName, 1, 17) # The names of outlier loci
+P1$label <- substr(P1$LocusName, 1, 100) # The names of loci
+P1$label <- substr(P1$label, 1, nchar(P1$label)-4)
 P1$transformed.p <- -log(P1$pvalues)
-P1$scaffold <- as.integer(substr(P1$LocusName, 7, 10)) # The names of outlier loci
+P1$scaffold <- as.integer(substr(P1$LocusName, 7, 10)) # The names of scaffolds
 P1$scaffold[P1$scaffold > 44] <- 9999
 P1$scaffold <- factor(P1$scaffold)
+
 
 ## Drop unneeded columns
 drops <- c("LocusName","He", "T1", "T2", "T1NoCorr", "T2NoCorr", "meanAlleleFreq", "pvalues",
@@ -79,27 +86,16 @@ ggplot(P1, aes(Index, transformed.p, label = label)) +
   theme(legend.position="none") +
   NULL
 
-#### Create plot of full Fst distribution
-ggplot(P1, aes(x = FSTNoCorr)) +
-  geom_histogram(binwidth = 0.005) +
-  geom_vline(xintercept = 0.2674457, size = 1, lty = 5) +
-  ylab("Frequency") +
-  xlab(expression(F["ST"])) +
-  theme_classic(base_size = 24) +
-  NULL
-
-
 ### "OF" flags homogeneous data as outliers, therefore, we do not depend on the T or F flag
 ### Calculated P values are then transformed using qvalue
 qval <- qvalue(P1$pvaluesRightTail)$qvalues
-alpha <- 0.05
+alpha <- 0.1
 outliers <- which(qval<alpha)
 length(outliers) # Number of outlier loci
 
 ## Find outlier loci names, rather than numbers
 outliers.num <- as.numeric(outliers)
-outlierLoci <- locinames[outliers.num]
-outlierLoci <- substr(outlierLoci,1,nchar(outlierLoci)-4) # The names of outlier loci
+outlierLoci <- P1[outliers.num,]$label
 outlierLoci.df <- as.data.frame(outlierLoci)
 
 #write.csv(outlierLoci, "outlierLoci.csv")

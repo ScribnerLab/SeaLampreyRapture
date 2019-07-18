@@ -14,7 +14,7 @@ allLoci.vcfR <- read.vcfR("./extData/lamprey_freebayes.targetloci.filtered.subsa
 
 indPops <-  read.delim("./extData/indNames.csv",
                        sep = ",",
-                       header = FALSE)
+                       header = TRUE)
 
 appendixLoci <- read.delim("./extData/Loci_Appendix_112918.txt",
                            sep = "\t",
