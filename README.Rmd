@@ -55,10 +55,10 @@ install_github("ScribnerLab/SeaLampreyRapture")
 7. database_v2: Phenotype, location, and barcode information for each sea lamprey sample
 8. indNames: Population and cohort assignments for each sea lamprey in down-sampled dataset
 9. lamprey_freebayes.targetloci.filtered.subsampled.vcf: Down-sampled SNP dataset to include only unrelated individuals
-10: Lamprey_TargetDensity: Target density of all sequenced loci
-11: Loci_Appendix_112918: Genetic diversity information for all sequenced loci
-12: R_OT: On target rates for all loci
-13: targets.chrpos: Chromosome mapping information
+10. Lamprey_TargetDensity: Target density of all sequenced loci
+11. Loci_Appendix_112918: Genetic diversity information for all sequenced loci
+12. R_OT: On target rates for all loci
+13. targets.chrpos: Chromosome mapping information
 
 
 ### Contact
