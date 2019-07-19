@@ -6,6 +6,9 @@ and analyses associated with Sard et al. (in review). R analysis scripts
 are provided in analysis/, R source scripts are in src/, human-readable
 data in extData/, and R-readable data in an .rda file in data/.
 
+Detailed quantiative descriptions of the results of sea lamprey RAPTURE
+sequencing is available in /analysis/Rapture panel details.
+
 Note: All analyses originally conducted and package built using R
 version 3.5.1 in Windows 10
 
