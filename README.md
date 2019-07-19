@@ -21,8 +21,6 @@ version 3.5.1 in Windows 10
 
 ![compendiumOutline](./extData/compendiumOutline.pdf)
 
-![Test Image 3](/extData/compendiumOutline.pdf)
-
 ### Data in /extData
 
 1.  alf.dist: Allele frequencies
