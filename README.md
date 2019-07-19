@@ -33,7 +33,8 @@ version 3.5.1 in Windows 10
     offspring
 2.  /Real pedigree data/dck\_2\_location.heat.map.R: Location heatmap
     for Duffins Creek
-3.  /Real pedigree data/dck\_2\_location.randomization.all.ages.R:
+3.  /Real pedigree data/dck\_2\_location.randomization.all.ages.R: Test
+    significance of spatial clustering of siblings
 4.  /Real pedigree data/exact.tests.R: Perform Fisher's exact tests on
     results data
 5.  /Read pedigree data/pedigree.stats.R: Number of successful parents,
@@ -48,7 +49,6 @@ version 3.5.1 in Windows 10
     pedigree to the inferred from COLONY
 3.  /Linux colony runs/source.scripts/summarize.conf.mat.R: Collate all
     confusion matricies from colony simulations into a single file
-    \*\*\*\*
 
 ### Data in /extData
 
