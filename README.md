@@ -1,3 +1,5 @@
+![compendiumOutline](./extData/compendiumOutline.pdf)
+
 Sea Lamprey Rapture
 ===================
 

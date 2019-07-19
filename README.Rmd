@@ -10,6 +10,9 @@ pdf_document: default
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+![compendiumOutline](./extData/compendiumOutline.pdf)
+
 # Sea Lamprey Rapture
 
 SeaLampreyRapture is a research compendium that brings together the data and analyses associated with Sard et al. (in review). R analysis scripts are provided in analysis/, R source scripts are in src/, human-readable data in extData/, and R-readable data in an .rda file in data/. 
