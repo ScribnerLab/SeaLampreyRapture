@@ -27,10 +27,8 @@ library(devtools)
 install_github("ScribnerLab/SeaLampreyRapture")
 ```
 
-
-![compendiumOutline](compendiumOutline.pdf)
-
-
+#
+![compendiumOutline](./extData/compendiumOutline.pdf)
 
 
 ### Scripts in /analysis
