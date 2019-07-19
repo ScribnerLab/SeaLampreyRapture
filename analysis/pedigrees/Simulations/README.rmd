@@ -3,9 +3,9 @@ title: "Best configuration analysis"
 author: "Nick Sard"
 date: "July 18, 2019"
 output:
-  md_document: default
-  html_document: default
   pdf_document: default
+  html_document: default
+  md_document: default
 ---
 
 ```{r setup, include=FALSE}
