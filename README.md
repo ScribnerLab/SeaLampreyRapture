@@ -29,13 +29,13 @@ version 3.5.1 in Windows 10
 
 ### Scripts in /analysis/pedigrees/Real pedigree data/
 
-1.  /Real pedigree data/exact.tests.R: Perform Fisher's exact tests on
-    results data
-2.  /Real pedigree data/brd.matrix.figure.R: Mate pair matrix of sampled
+1.  /Real pedigree data/brd.matrix.figure.R: Mate pair matrix of sampled
     offspring
-3.  /Real pedigree data/dck\_2\_location.heat.map.R: NEED HELP
-4.  /Real pedigree data/dck\_2\_location.randomization.all.ages.R: NEED
-    HELP
+2.  /Real pedigree data/dck\_2\_location.heat.map.R: Location heatmap
+    for Duffins Creek
+3.  /Real pedigree data/dck\_2\_location.randomization.all.ages.R:
+4.  /Real pedigree data/exact.tests.R: Perform Fisher's exact tests on
+    results data
 5.  /Read pedigree data/pedigree.stats.R: Number of successful parents,
     half-sib dyads, and full-sib dyads with reproductive success &
     coancestry.
@@ -47,9 +47,8 @@ version 3.5.1 in Windows 10
 2.  /Linux colony runs/source.scripts/post.processing.R: Compare a known
     pedigree to the inferred from COLONY
 3.  /Linux colony runs/source.scripts/summarize.conf.mat.R: Collate all
-    output files from colony simulations into a single file \*\*\*\*
-4.  /Linux colony runs/source.scripts/summarize.output.R: Collate all
-    output files from colony simulations into a single file \*\*\*\*
+    confusion matricies from colony simulations into a single file
+    \*\*\*\*
 
 ### Data in /extData
 
