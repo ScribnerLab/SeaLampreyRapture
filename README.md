@@ -1,5 +1,3 @@
-![compendiumOutline](./extData/compendiumOutline.pdf)
-
 Sea Lamprey Rapture
 ===================
 
@@ -21,7 +19,7 @@ version 3.5.1 in Windows 10
     library(devtools)
     install_github("ScribnerLab/SeaLampreyRapture")
 
-![compendiumOutline](./extData/compendiumOutline.pdf)
+![compendiumOutline](./extData/compendiumOutline.png)
 
 ### Data in /extData
 
