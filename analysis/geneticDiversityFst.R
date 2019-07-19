@@ -7,6 +7,7 @@ library(adegenet)
 library(vcfR)
 library(hierfstat)
 library(tidyverse)
+library(mmod)
 library(SeaLampreyRapture)
 data(SeaLampreyRapture)
 
@@ -14,7 +15,7 @@ data(SeaLampreyRapture)
 dat.genind <- vcfR2genind(allLoci.vcfR, sep = "[|/]") ## Create genind object
 
 ### Assign pop names to genind file
-dat.genind@pop <- indPops$V1
+dat.genind@pop <- indPops$Age
 
 ### Create hierfstat object
 dat.hierfstat.pops <- genind2hierfstat(dat.genind)
@@ -94,5 +95,4 @@ gd.tib <- Hobs.tib %>%
 #write.csv(gd.tib, "gd.tib.csv")
 
 #### Pairwise Fsts for all unrelated lamprey ####
-pairwise.fsts <- pairwise.fst(dat.genind)
-
+pairwise.fsts <- pairwise_Gst_Nei(dat.genind, linearized = FALSE)

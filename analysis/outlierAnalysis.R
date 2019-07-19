@@ -29,13 +29,9 @@ dat1[dat1 == 3] <- 2
 ## Read in age-specific population names
 dat1$pop <- indPops$Pop ## Assign populations to each individual, stored within genind object
 
-## Subset to only retain largest year class from DCJ and SC
-#dat2 <- filter(dat1, pop %in% c("BR", "CARP", "DCJ-2", "SC-3", "SM"))
-dat2 <- dat1
-
 ##### Build input files ######
-genotype <- dat2[, 2:(ncol(dat2)-1)]
-ind <- paste("pop", dat2$pop) # vector with the name of population
+genotype <- dat1[, 2:(ncol(dat1)-1)]
+ind <- paste("pop", dat1$pop) # vector with the name of population
 locinames <- as.character(colnames(genotype)) # vector of name of loci (actually just index)
 FstDataFrame1 <- MakeDiploidFSTMat(genotype, locinames, ind)
 

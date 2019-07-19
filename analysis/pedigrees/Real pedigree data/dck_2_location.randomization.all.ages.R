@@ -28,7 +28,7 @@ sim.out <- NULL
 #############
 
 #reading in data
-df <- best.config.dck.age.2
+df <- best.config.dck.age.1
 df$ClusterIndex <- NULL
 head(df)
 
@@ -53,8 +53,8 @@ df$OffspringID <- gsub(pattern = " ",replacement = "",x = df$OffspringID)
 head(df)
 
 #now merging df with df1
-best.config.dck.age.1 <-
-  merge(x = best.config.dck.age.1,
+df <-
+  merge(x = df,
         y = df1,
         by.x = "OffspringID",
         by.y = "id")
@@ -156,12 +156,12 @@ real.data
 #############
 
 #reading in data
-df <- read.table(file = "Input/best.config.dck.age.2.txt",header = T,sep = "\t",stringsAsFactors = F)
+df <- best.config.dck.age.2
 df$ClusterIndex <- NULL
 head(df)
 
 #reading in loc data
-df1 <- read.table(file = "Input/database_v2.txt",header = T,sep = "\t",stringsAsFactors = F)
+df1 <- database_v2
 head(df1)
 
 #making some lat, long, df info for merging later
@@ -181,7 +181,11 @@ df$OffspringID <- gsub(pattern = " ",replacement = "",x = df$OffspringID)
 head(df)
 
 #now merging df with df1
-df <- merge(x = df,y = df1,by.x = "OffspringID",by.y = "id")
+df <-
+  merge(x = df,
+        y = df1,
+        by.x = "OffspringID",
+        by.y = "id")
 head(df)
 
 #getting offspring names and making a df of unique pairs
@@ -216,7 +220,7 @@ tmp2$all <- tmp2$fs + tmp2$mat_hs + tmp2$pat_hs
 head(tmp2)
 
 #getting cols I want for the randomization prep
-tmp3 <- tmp2 %>% select(OffspringID.x,OffspringID.y,type.x,type.y,all)
+tmp3 <- tmp2 %>% select(OffspringID.x, OffspringID.y, type.x, type.y,all)
 tmp3$within <- ifelse(tmp3$type.x == tmp3$type.y, "Y","N")
 head(tmp3)
 
@@ -269,7 +273,7 @@ head(out)
 sim.out <- rbind(sim.out,out)
 head(sim.out)
 
-#now the stats
+#doing the stats
 pvalue <- length(out$prop[out$prop>real.prop])/nrow(out)
 real.data1 <- tibble(dyads.total,dyads.related.within,dyads.related,real.prop, age= "Age - 2",pvalue)
 real.data <- rbind(real.data,real.data1)
@@ -280,12 +284,12 @@ real.data
 #############
 
 #reading in data
-df <- read.table(file = "Input/best.config.dck.age.3.txt",header = T,sep = "\t",stringsAsFactors = F)
+df <- best.config.dck.age.3
 df$ClusterIndex <- NULL
 head(df)
 
 #reading in loc data
-df1 <- read.table(file = "Input/database_v2.txt",header = T,sep = "\t",stringsAsFactors = F)
+df1 <- database_v2
 head(df1)
 
 #making some lat, long, df info for merging later
@@ -305,7 +309,11 @@ df$OffspringID <- gsub(pattern = " ",replacement = "",x = df$OffspringID)
 head(df)
 
 #now merging df with df1
-df <- merge(x = df,y = df1,by.x = "OffspringID",by.y = "id")
+df <-
+  merge(x = df,
+        y = df1,
+        by.x = "OffspringID",
+        by.y = "id")
 head(df)
 
 #getting offspring names and making a df of unique pairs
@@ -340,7 +348,7 @@ tmp2$all <- tmp2$fs + tmp2$mat_hs + tmp2$pat_hs
 head(tmp2)
 
 #getting cols I want for the randomization prep
-tmp3 <- tmp2 %>% select(OffspringID.x,OffspringID.y,type.x,type.y,all)
+tmp3 <- tmp2 %>% select(OffspringID.x, OffspringID.y, type.x, type.y,all)
 tmp3$within <- ifelse(tmp3$type.x == tmp3$type.y, "Y","N")
 head(tmp3)
 
@@ -393,26 +401,13 @@ head(out)
 sim.out <- rbind(sim.out,out)
 head(sim.out)
 
-#now the stats
+#doing the stats
 pvalue <- length(out$prop[out$prop>real.prop])/nrow(out)
 real.data1 <- tibble(dyads.total,dyads.related.within,dyads.related,real.prop, age= "Age - 3",pvalue)
 real.data <- rbind(real.data,real.data1)
 real.data
 
-#finally a figure
-tiff(filename = "Output/all.age.dyads.randomization.tiff",width = 11,height = 8,units = "in",res = 300)
-ggplot(sim.out, aes(x = prop))+
-  facet_wrap(~age)+
-  geom_histogram()+
-  geom_vline(data = real.data, aes(xintercept = real.prop), size=2,linetype=2)+
-  theme_bw()+
-  labs(x = "Proportion of random dyads observed within sampling locations",y="Number of simulations\n")+
-  theme(axis.title= element_text(size=20),
-        strip.text = element_text(size=18),
-        axis.text = element_text(size=18,colour = "black"))
-dev.off()
-
 #writing to file
-write.table(x = real.data,file = "Output/randomization.results.txt",append = F,quote = F,sep = "\t",row.names = F,col.names = T)
+write.table(x = real.data,file = "./analysis/pedigrees/Read pedigree data/Output/randomization.results.txt",append = F,quote = F,sep = "\t",row.names = F,col.names = T)
 
 #fin!

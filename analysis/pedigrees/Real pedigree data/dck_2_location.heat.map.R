@@ -49,12 +49,13 @@ head(df1)
 
 #fixing offspring ID thing - removing a space
 best.config.dck.age.1$OffspringID <- gsub(pattern = " ",replacement = "",x = best.config.dck.age.1$OffspringID)
-head(df)
+best.config.dck.age.1$ClusterIndex <- NULL
+head(best.config.dck.age.1)
 
 #now merging df with df1 to connect IDs with sampling location
 df <-
   merge(x = best.config.dck.age.1,
-        y = database_v2,
+        y = df1,
         by.x = "OffspringID",
         by.y = "id")
 head(df)
@@ -184,33 +185,35 @@ head(age1)
 ### Age 2 ###
 #############
 
-#reading in data
-df <- read.table(file = "Input/best.config.dck.age.2.txt",header = T,sep = "\t",stringsAsFactors = F)
-df$ClusterIndex <- NULL
-head(df)
-
-#reading in loc data
-df1 <- read.table(file = "Input/database_v2.txt",header = T,sep = "\t",stringsAsFactors = F)
-head(df1)
-
 #getting and location type, lat, long, df info for merging later
-df2 <- df1 %>% filter(loc == "DCK") %>% group_by(type) %>% slice(1) %>% select(type,lat,long)
+df2 <- database_v2 %>%
+  mutate(loc = as.factor(loc), type = as.factor(type)) %>%
+  filter(loc == "DCK") %>%
+  group_by(type) %>%
+  dplyr::slice(1) %>%
+  select(type,lat,long)
 head(df2)
 
 #selecting cols of interest for merge later
-df1 <- df1 %>% select(id,lat,long,type)
+df1 <- database_v2 %>%
+  select(id,lat,long,type)
 head(df1)
 
-#making sure names are correct in pedigree
-colnames(df) <- c("OffspringID","MotherID","FatherID")
-head(df)
+##making sure names are correct in pedigree
+#colnames(best.config.dck.age.2) <- c("OffspringID","MotherID","FatherID")
+#head(df)
 
 #fixing offspring ID thing - removing a space
-df$OffspringID <- gsub(pattern = " ",replacement = "",x = df$OffspringID)
-head(df)
+best.config.dck.age.2$OffspringID <- gsub(pattern = " ",replacement = "",x = best.config.dck.age.2$OffspringID)
+best.config.dck.age.2$ClusterIndex <- NULL
+head(best.config.dck.age.2)
 
 #now merging df with df1 to connect IDs with sampling location
-df <- merge(x = df,y = df1,by.x = "OffspringID",by.y = "id")
+df <-
+  merge(x = best.config.dck.age.2,
+        y = df1,
+        by.x = "OffspringID",
+        by.y = "id")
 head(df)
 #note that the "new" should be the same number of rows as the "original"
 
@@ -279,11 +282,13 @@ head(tmp3)
 
 #now I want to get counts of related dyads within each *location* pairise comparison
 tmp4 <- tmp3 %>%
-  group_by(type.x,type.y) %>%
-  count() %>% as.data.frame()
+  group_by(type.x, type.y) %>%
+  dplyr::count() %>%
+  as.data.frame()
+
 head(tmp4)
 
-#the above does not contain locations with 0 observations, so using expand grid
+#the above does not contain locations with 0 observations, so use expand grid
 #to get all comparisons - making names character strings and making a unique ID with paste again
 df3 <- expand.grid(df2$type,df2$type)
 df3$Var1 <- as.character(df3$Var1)
@@ -306,10 +311,12 @@ df3$n[is.na(df3$n)] <- 0
 head(df3)
 
 #making into wideform
-df4 <- df3 %>% spread(Var2,n)
+df4 <- df3 %>%
+  spread(Var2, n)
+
 head(df4)
 
-#the problem is that some values on the top of the diagonal and others are on
+#the problem is that some values are on the top of the diagonal and others are on
 #the bottom. I need to get them on the same side using some base R functions
 row.names(df4) <- df4$Var1
 df4$Var1 <- NULL
@@ -334,33 +341,35 @@ head(age2)
 ### Age 3 ###
 #############
 
-#reading in data
-df <- read.table(file = "Input/best.config.dck.age.3.txt",header = T,sep = "\t",stringsAsFactors = F)
-df$ClusterIndex <- NULL
-head(df)
-
-#reading in loc data
-df1 <- read.table(file = "Input/database_v2.txt",header = T,sep = "\t",stringsAsFactors = F)
-head(df1)
-
 #getting and location type, lat, long, df info for merging later
-df2 <- df1 %>% filter(loc == "DCK") %>% group_by(type) %>% slice(1) %>% select(type,lat,long)
+df2 <- database_v2 %>%
+  mutate(loc = as.factor(loc), type = as.factor(type)) %>%
+  filter(loc == "DCK") %>%
+  group_by(type) %>%
+  dplyr::slice(1) %>%
+  select(type,lat,long)
 head(df2)
 
 #selecting cols of interest for merge later
-df1 <- df1 %>% select(id,lat,long,type)
+df1 <- database_v2 %>%
+  select(id,lat,long,type)
 head(df1)
 
-#making sure names are correct in pedigree
-colnames(df) <- c("OffspringID","MotherID","FatherID")
-head(df)
+##making sure names are correct in pedigree
+#colnames(best.config.dck.age.3) <- c("OffspringID","MotherID","FatherID")
+#head(df)
 
 #fixing offspring ID thing - removing a space
-df$OffspringID <- gsub(pattern = " ",replacement = "",x = df$OffspringID)
-head(df)
+best.config.dck.age.3$OffspringID <- gsub(pattern = " ",replacement = "",x = best.config.dck.age.3$OffspringID)
+best.config.dck.age.3$ClusterIndex <- NULL
+head(best.config.dck.age.3)
 
 #now merging df with df1 to connect IDs with sampling location
-df <- merge(x = df,y = df1,by.x = "OffspringID",by.y = "id")
+df <-
+  merge(x = best.config.dck.age.3,
+        y = df1,
+        by.x = "OffspringID",
+        by.y = "id")
 head(df)
 #note that the "new" should be the same number of rows as the "original"
 
@@ -429,11 +438,13 @@ head(tmp3)
 
 #now I want to get counts of related dyads within each *location* pairise comparison
 tmp4 <- tmp3 %>%
-  group_by(type.x,type.y) %>%
-  count() %>% as.data.frame()
+  group_by(type.x, type.y) %>%
+  dplyr::count() %>%
+  as.data.frame()
+
 head(tmp4)
 
-#the above does not contain locations with 0 observations, so using expand grid
+#the above does not contain locations with 0 observations, so use expand grid
 #to get all comparisons - making names character strings and making a unique ID with paste again
 df3 <- expand.grid(df2$type,df2$type)
 df3$Var1 <- as.character(df3$Var1)
@@ -456,10 +467,12 @@ df3$n[is.na(df3$n)] <- 0
 head(df3)
 
 #making into wideform
-df4 <- df3 %>% spread(Var2,n)
+df4 <- df3 %>%
+  spread(Var2, n)
+
 head(df4)
 
-#the problem is that some values on the top of the diagonal and others are on
+#the problem is that some values are on the top of the diagonal and others are on
 #the bottom. I need to get them on the same side using some base R functions
 row.names(df4) <- df4$Var1
 df4$Var1 <- NULL
@@ -485,7 +498,7 @@ all.ages <- rbind(age1,age2,age3)
 head(all.ages)
 
 #now the figure
-tiff(filename = "Output/all.ages.dyads.heatmap.tiff",width = 14,height = 8,units = "in",res = 300)
+tiff(filename = "./analysis/pedigrees/Real pedigree data/Output/all.ages.dyads.heatmap.tiff",width = 14,height = 8,units = "in",res = 300)
 ggplot(all.ages, aes(x = locA, y=locB, fill=value2,label=value2))+
   facet_wrap(~age)+
   geom_tile(color="black")+
