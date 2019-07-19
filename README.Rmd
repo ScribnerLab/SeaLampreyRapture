@@ -27,6 +27,12 @@ library(devtools)
 install_github("ScribnerLab/SeaLampreyRapture")
 ```
 
+
+![compendiumOutline](compendiumOutline.pdf)
+
+
+
+
 ### Scripts in /analysis
 1. buildRDA.R: Build RDA file
 2. installPackages.R: Install required packages

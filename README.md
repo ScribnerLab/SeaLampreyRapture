@@ -19,6 +19,8 @@ version 3.5.1 in Windows 10
     library(devtools)
     install_github("ScribnerLab/SeaLampreyRapture")
 
+![compendiumOutline](compendiumOutline.pdf)
+
 ### Scripts in /analysis
 
 1.  buildRDA.R: Build RDA file

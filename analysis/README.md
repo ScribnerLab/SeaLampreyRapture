@@ -333,8 +333,4 @@ available at /analysis/outlierAnalysis.R
 
 <img src="README_files/figure-markdown_strict/unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
 
-{\#outlierSummary}
-<img src="./outlierTable.pdf" alt="Outlier loci summary table"  />
-<p class="caption">
-Outlier loci summary table
-</p>
+![outlierTable](outlierTable.pdf)

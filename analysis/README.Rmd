@@ -307,8 +307,5 @@ ggplot(P1, aes(Index, transformed.p, label = label)) +
   NULL
 ```
 
-# 
-{#outlierSummary}
-```{r,, include=TRUE, fig.height = 6, fig.width = 12, fig.align="center", fig.cap=c("Outlier loci summary table"), echo=FALSE}
-knitr::include_graphics("./outlierTable.pdf")
-```
+
+![outlierTable](outlierTable.pdf)
