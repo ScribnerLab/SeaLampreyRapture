@@ -1,4 +1,4 @@
-![BestConfFigure](https://github.com/ScribnerLab/SeaLampreyRapture/analysis/pedigrees/Simulations/Figure.png)
+![BestConfFigure](Figure.png)
 
 There are there major steps when analyzing a COLONY BestConfig (BC) file
 generated using simulated offspring genotypes where the user provides no
