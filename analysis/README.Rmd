@@ -308,4 +308,4 @@ ggplot(P1, aes(Index, transformed.p, label = label)) +
 ```
 
 
-![outlierTable](outlierTable.pdf)
+![outlierTable](outlierTable.png)
