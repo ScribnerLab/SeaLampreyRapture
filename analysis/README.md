@@ -270,8 +270,8 @@ available at /analysis/outlierAnalysis.R
     dat <- genotypeToSnpMatrix(allLoci.vcf, uncertain=FALSE)
     dat1 <- as.data.frame(dat$genotypes@.Data)
 
-    write.csv(dat1, "../../tmp/data1temp.csv")
-    dat1 <- read.csv("../../tmp/data1temp.csv")
+    write.csv(dat1, "../tmp/data1temp.csv")
+    dat1 <- read.csv("../tmp/data1temp.csv")
 
     dat1[dat1 == 0] <- 9
     dat1[dat1 == 1] <- 0
