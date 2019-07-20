@@ -29,7 +29,7 @@ install_github("ScribnerLab/SeaLampreyRapture")
 ```
 
 
-![compendiumOutline](./extData/compendiumOutline.png =500x10000)
+![compendiumOutline](./extData/compendiumOutline.png =100x150)
 
 
 
