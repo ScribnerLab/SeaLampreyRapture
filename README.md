@@ -21,31 +21,6 @@ version 3.5.1 in Windows 10
 
 ![compendiumOutline](./extData/compendiumOutline.png)
 
-### Data in /extData
-
-1.  alf.dist: Allele frequencies
-2.  best.config.dck.age.1: Best configuration file for Duffins Creek,
-    age 1 sea lamprey
-3.  best.config.dck.age.2: Best configuration file for Duffins Creek,
-    age 2 sea lamprey
-4.  best.config.dck.age.3: Best configuration file for Duffins Creek,
-    age 3 sea lamprey
-5.  best.config.scr.age.2: Best configuration file for St. Clair River,
-    age 2 sea lamprey
-6.  best.config.scr.age.3: Best configuration file for St. Clair River,
-    age 3 sea lamprey
-7.  database\_v2: Phenotype, location, and barcode information for each
-    sea lamprey sample
-8.  indNames: Population and cohort assignments for each sea lamprey in
-    down-sampled dataset
-9.  lamprey\_freebayes.targetloci.filtered.subsampled.vcf: Down-sampled
-    SNP dataset to include only unrelated individuals
-10. Lamprey\_TargetDensity: Target density of all sequenced loci
-11. Loci\_Appendix\_112918: Genetic diversity information for all
-    sequenced loci
-12. R\_OT: On target rates for all loci
-13. targets.chrpos: Chromosome mapping information
-
 ### Contact
 
 Nick M. Sard  
