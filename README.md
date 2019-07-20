@@ -7,7 +7,8 @@ are provided in analysis/, R source scripts are in src/, human-readable
 data in extData/, and R-readable data in an .rda file in data/.
 
 Detailed quantiative descriptions of the results of sea lamprey RAPTURE
-sequencing is available in /analysis/Rapture panel details.
+sequencing is available as an R Markdown file and in the README in
+/analysis.
 
 Note: All analyses originally conducted and package built using R
 version 3.5.1 in Windows 10
@@ -19,8 +20,9 @@ version 3.5.1 in Windows 10
     library(devtools)
     install_github("ScribnerLab/SeaLampreyRapture")
 
-<img src="./extData/compendiumOutline.png" class="center" width="700" height="9000">
-
+<center>
+<img src="./extData/compendiumOutline.png" width="700" height="9000">
+</center>
 ### Contact
 
 Nick M. Sard  
