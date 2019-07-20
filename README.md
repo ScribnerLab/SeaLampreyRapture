@@ -19,9 +19,7 @@ version 3.5.1 in Windows 10
     library(devtools)
     install_github("ScribnerLab/SeaLampreyRapture")
 
-![compendiumOutline](./extData/compendiumOutline.png%20=100x150)
-
-<img src="./extData/compendiumOutline.png" width="100" height="150">
+<img src="./extData/compendiumOutline.png" width="800" height="7500">
 
 ### Contact
 
