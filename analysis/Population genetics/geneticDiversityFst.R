@@ -15,7 +15,7 @@ data(SeaLampreyRapture)
 dat.genind <- vcfR2genind(allLoci.vcfR, sep = "[|/]") ## Create genind object
 
 ### Assign pop names to genind file
-dat.genind@pop <- indPops$Age
+dat.genind@pop <- indPops$Pop
 
 ### Create hierfstat object
 dat.hierfstat.pops <- genind2hierfstat(dat.genind)
@@ -96,3 +96,6 @@ gd.tib <- Hobs.tib %>%
 
 #### Pairwise Fsts for all unrelated lamprey ####
 pairwise.fsts <- pairwise_Gst_Nei(dat.genind, linearized = FALSE)
+global.fst <- diff_stats(dat.genind)
+
+loci.fst <- Gst_Nei(dat.genind)
