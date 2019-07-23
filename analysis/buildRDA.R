@@ -8,15 +8,15 @@ library(vcfR)
 
 ### Load data
 ## Observed genetic data
-allLoci.vcf <- readVcf("./extData/lamprey_freebayes.targetloci.filtered.subsampled.11818.vcf")
+allLoci.vcf <- readVcf("./extData/lamprey_freebayes.targetloci.filtered.subsampled.vcf")
 
-allLoci.vcfR <- read.vcfR("./extData/lamprey_freebayes.targetloci.filtered.subsampled.11818.vcf")
+allLoci.vcfR <- read.vcfR("./extData/lamprey_freebayes.targetloci.filtered.subsampled.vcf")
 
 indPops <-  read.delim("./extData/indNames.csv",
                        sep = ",",
                        header = TRUE)
 
-appendixLoci <- read.delim("./extData/lociAppendix.txt",
+appendixLoci <- read.delim("./extData/Loci_Appendix_112918.txt",
                            sep = "\t",
                            header = TRUE)
 

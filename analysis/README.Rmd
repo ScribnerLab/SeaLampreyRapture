@@ -20,8 +20,8 @@ knitr::opts_chunk$set(echo = TRUE)
 * [Sequencing profile](#SeqProfile)
      + [On/off target reads per locus](#Target)
      + [Allele balance](#AlleleBalance)
-     + [Target density](#TargetDensity)
      + [Chromosome plots](#Chromo)
+     + [Target density](#TargetDensity)
 * [Genetic variation](#GenVar)
      + [Locus *F*~ST~ values](#Fst)
      + [Locus *F*~IS~ values](#Fis)
@@ -65,10 +65,10 @@ data(SeaLampreyRapture)
 <br>
 
 # Sequencing profile {#SeqProfile}
-The following section characterizes the sequencing results.
+The following section characterizes sequencing results. Specifically, we evaluate the number of mapped reads for on and off-target loci, allele read balance, and the density of targeted RAD loci across the genome.
 
 ### On/off target reads per locus {#Target}
-The number of mapped read pairs for RAD loci targeted with rapture (On_Target) versus RAD loci that were not targeted (Off_Target). Overall, 80.6% of reads aligned to targeted loci even though they only made up less than 10% of all RAD loci.
+The number of mapped read pairs for RAD loci targeted with RAPTURE (On_Target) versus RAD loci that were not targeted (Off_Target). Overall, 80.6% of reads aligned to targeted loci even though they made up less than 10% of all RAD loci. Results demonstrate that the target enrichment assay was highly successful. 
 ```{r, message = FALSE, warning = FALSE, fig.align = "center"}
 p <- ggplot(onTarget_readCount, aes(x=ReadCount, fill = T)) +
   geom_histogram(binwidth = 10000, color = "black") +
@@ -85,7 +85,7 @@ p + ggtitle("") +
 ```
 
 ### Allele balance {#AlleleBalance}
-Allele read balance (AB) calculated for all SNPs in manuscript Table 1. Allele balance is the proportion of reads supporting the reference allele for heterozygous genotypes at a given locus. We expect values to be near 0.5 for diploid loci that are not confounded by sequencing or mapping errors.
+Allele balance (AB) calculated for all SNPs in manuscript Table 1. Allele balance is the proportion of reads supporting the reference allele for heterozygous genotypes at a given locus (reported by Freebayes). We expect values to be near 0.5 for diploid loci that are not confounded by sequencing or mapping errors. We see that the distribution of AB is centered on 0.5 and that the vast majority of SNPs have values ranging from 0.25 to 0.75. At a small subset of loci, there appears to be a bias toward sequencing the alternate allele (AB < 0.25); however, these loci make up a small fraction of all genotyped SNPs.
 
 ```{r, message = FALSE, warning = FALSE, fig.align = "center"}
 s1 <- subset(appendixLoci, allele_balance < 0.7)
@@ -105,9 +105,27 @@ p + ggtitle("") +
 ```
 
 
-### Target density {#TargetDensity}
-The mean density of targeted loci across these scaffolds was 4.02 RAD loci per mega-base (SD = 1.30) 
+### Chromosome plots {#Chromo}
+#### Greater than 10 mb
+Distribution of target RAD loci across the 44 largest scaffolds (>10 mb) in the sea lamprey genome. Each horizontal black line represents a scaffold and each vertical blue line represents the location of a targeted RAD locus. A total of 2844 of 3446 targeted loci map to these scaffolds (82.5%).
 
+```{r, message = FALSE, warning = FALSE, fig.height = 12, fig.width = 10, fig.align = "center"}
+dat45 <- subset(targets.chrpos, targets.chrpos$CHR < 45)
+chrompos <- prepareGenomePlot(dat45, cols = "grey50", paintCytobands = TRUE, bleach = 0, topspace = 1, cex = 2, sexChromosomes = FALSE)
+points(chrompos[,2],chrompos[,1]+0.05,pch="|", cex = 0.75, col="deepskyblue4")
+```
+
+#### Greater than 1 mb
+Distribution of target RAD loci on scaffolds greater than 1 MB in length. Each horizontal black line represents a scaffold and each vertical blue line represents the location of a targeted locus. A total of 3316 of 3446 targeted RAD loci map to these scaffolds (96.22%).
+
+```{r, message = FALSE, warning = FALSE, fig.height = 24, fig.width = 10, fig.align = "center"}
+dat106 <- subset(targets.chrpos, targets.chrpos$CHR < 106)
+chrompos <- prepareGenomePlot(dat106, cols = "grey50", paintCytobands = TRUE, bleach = 0, topspace = 1, cex = 2, sexChromosomes = FALSE)
+points(chrompos[,2],chrompos[,1]+0.05,pch="|", cex = 0.75, col="deepskyblue4")
+```
+
+### Target density {#TargetDensity}
+The mean density of targeted loci across scaffolds >10MB in length was 4.02 RAD loci per mega-base (SD = 1.30)
 ```{r, message = FALSE, warning = FALSE, fig.align = "center"}
 data <- subset(targetDensity, chr_length > 10000000)
 mn <- mean(data$density)
@@ -127,40 +145,19 @@ p + ggtitle("") +
 
 ```
 
-### Chromosome plots {#Chromo}
-#### Greater than 10 mb
-Distribution of target RAD loci across the 44 largest scaffolds (>10 mb) in the sea lamprey
-genome. Each horizontal black line represents a scaffold and each vertical blue line represents the
-location of a targeted locus. A total of 2844 of 3446 targeted loci map to these scaffolds (82.5%).
-
-```{r, message = FALSE, warning = FALSE, fig.height = 12, fig.width = 10, fig.align = "center"}
-dat45 <- subset(targets.chrpos, targets.chrpos$CHR < 45)
-chrompos <- prepareGenomePlot(dat45, cols = "grey50", paintCytobands = TRUE, bleach = 0, topspace = 1, cex = 2, sexChromosomes = FALSE)
-points(chrompos[,2],chrompos[,1]+0.05,pch="|", cex = 0.75, col="deepskyblue4")
-```
-
-#### Greater than 1 mb
-Distribution of target RAD loci across 100 scaffolds greater than 1 MB in length. Each horizontal black line represents a scaffold and each vertical blue line represents the location of a targeted locus. A total of 3316 of 3446 targeted loci map to these scaffolds (96.22%).
-
-```{r, message = FALSE, warning = FALSE, fig.height = 24, fig.width = 10, fig.align = "center"}
-dat106 <- subset(targets.chrpos, targets.chrpos$CHR < 106)
-chrompos <- prepareGenomePlot(dat106, cols = "grey50", paintCytobands = TRUE, bleach = 0, topspace = 1, cex = 2, sexChromosomes = FALSE)
-points(chrompos[,2],chrompos[,1]+0.05,pch="|", cex = 0.75, col="deepskyblue4")
-```
-
 
 # Genetic variation {#GenVar}
-The following section characterizes the genetic variation detected using the bait panel
+The following section characterizes inter and intra-population genetic variation at SNP loci that were genotyped using RAPTURE. We first generate a plot of *F*~ST~, then produce histograms of minor allele frequency and *F*~IS~ for each of 5 sampling locations.  We then detect loci putatively under selection using the “Outflank” method (Whitlock and Lotterhos, 2015)
 
 ### Histogram of *F*~ST~ values per locus {#Fst}
-Distribution of *F*~ST~ values for 11,970 SNP loci genotyped in sea lamprey at five spawning sites. The dashed vertical line indicates the mean *F*~ST~ value.
+Distribution of *F*~ST~ values for 11,818 SNP loci genotyped in sea lamprey at five spawning sites. The dashed vertical line indicates the mean *F*~ST~ value.
 
 ```{r, message = FALSE, warning = FALSE, fig.align = "center"}
-dat.fst <- appendixLoci %>% drop_na(fst_nei73_heirfstat)
-Fst <- dat.fst$fst_nei73_heirfstat
+dat.fst <- appendixLoci %>% drop_na(Fst)
+Fst <- dat.fst$Fst
 mf <- mean(Fst)
 
-p <- ggplot(dat.fst, aes(x=fst_nei73_heirfstat)) +
+p <- ggplot(dat.fst, aes(x=Fst)) +
   geom_histogram(fill="deepskyblue3",color = "black", binwidth = 0.01) +
   geom_vline(xintercept = mf, linetype = "dashed")
 
@@ -174,14 +171,14 @@ p + ggtitle("") +
 
 
 ### *F*~IS~ values per locus, per population {#Fis}
-Distributions of *F*~IS~ generally centered around zero for 11,970 SNP loci genotyped in sea lamprey at five spawning sites.
+Distributions of *F*~IS~ generally centered around zero for 11,818 SNP loci genotyped in sea lamprey at five spawning sites.
 
 ```{r, message = FALSE, warning = FALSE, fig.height = 12, fig.width = 8, fig.align = "center"}
 CARP <- as.data.frame(cbind(appendixLoci$Fis_CARP, rep(x = "CARP", nrow(appendixLoci))))
 BR <- as.data.frame(cbind(appendixLoci$Fis_BR, rep(x = "BR", nrow(appendixLoci))))
 SC <- as.data.frame(cbind(appendixLoci$Fis_SC, rep(x = "SC", nrow(appendixLoci))))
 SM <- as.data.frame(cbind(appendixLoci$Fis_SM, rep(x = "SM", nrow(appendixLoci))))
-DCJ <- as.data.frame(cbind(appendixLoci$Fis_DCJ, rep(x = "DCJ", nrow(appendixLoci))))
+DCJ <- as.data.frame(cbind(appendixLoci$Fis_DUFFINS, rep(x = "DCJ", nrow(appendixLoci))))
 
 names(CARP) <- c("Fis", "Pop")
 names(BR) <- c("Fis", "Pop")
@@ -209,14 +206,14 @@ p + ggtitle("") +
 
 
 ### Minor allele frequencies per locus, per population {#MAF}
-Distributions of minor allele frequencies for 11,970 SNP loci genotyped in sea lamprey at five spawning sites varied among populations.
+Distributions of minor allele frequencies for 11,818 SNP loci genotyped in sea lamprey at five spawning sites.
 
 ```{r, message = FALSE, warning = FALSE, fig.height = 12, fig.width = 8, fig.align = "center"}
 CARP <- as.data.frame(cbind(appendixLoci$MAF_CARP, rep(x = "CARP", nrow(appendixLoci))))
 BR <- as.data.frame(cbind(appendixLoci$MAF_BR, rep(x = "BR", nrow(appendixLoci))))
 SC <- as.data.frame(cbind(appendixLoci$MAF_SC, rep(x = "SC", nrow(appendixLoci))))
 SM <- as.data.frame(cbind(appendixLoci$MAF_SM, rep(x = "SM", nrow(appendixLoci))))
-DCJ <- as.data.frame(cbind(appendixLoci$MAF_DCJ, rep(x = "DCJ", nrow(appendixLoci))))
+DCJ <- as.data.frame(cbind(appendixLoci$MAF_DUFFINS, rep(x = "DCJ", nrow(appendixLoci))))
 
 names(CARP) <- c("MAF", "Pop")
 names(BR) <- c("MAF", "Pop")
@@ -242,7 +239,7 @@ p + ggtitle("") +
 ```
 
 # Outlier analysis {#Outlier}
-We performed an outlier analysis using OutFLANK (Whitlock & Lotterhos, 2015). A more comprehensively annotated version of this script is available at /analysis/outlierAnalysis.R
+We performed an outlier analysis using OutFLANK (Whitlock & Lotterhos, 2015). A more comprehensively annotated version of this script is available at /analysis/outlierAnalysis.R. The analysis identified 10 loci putatively under selection. Evaluation of the DAPC loadings demonstrates that these loci contribute disproportionately to LD1, which separates Duffin’s Creek from upper Great Lakes populations.  
 
 ```{r, message = FALSE, warning = FALSE, fig.align = "center"}
 dat <- genotypeToSnpMatrix(allLoci.vcf, uncertain=FALSE)

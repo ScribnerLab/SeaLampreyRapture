@@ -97,5 +97,4 @@ gd.tib <- Hobs.tib %>%
 #### Pairwise Fsts for all unrelated lamprey ####
 pairwise.fsts <- pairwise_Gst_Nei(dat.genind, linearized = FALSE)
 global.fst <- diff_stats(dat.genind)
-
 loci.fst <- Gst_Nei(dat.genind)

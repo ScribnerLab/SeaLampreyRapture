@@ -7,8 +7,8 @@ Contents
 -   [Sequencing profile](#SeqProfile)
     -   [On/off target reads per locus](#Target)
     -   [Allele balance](#AlleleBalance)
-    -   [Target density](#TargetDensity)
     -   [Chromosome plots](#Chromo)
+    -   [Target density](#TargetDensity)
 -   [Genetic variation](#GenVar)
     -   [Locus *F*<sub>ST</sub> values](#Fst)
     -   [Locus *F*<sub>IS</sub> values](#Fis)
@@ -61,14 +61,17 @@ packages are available
 Sequencing profile
 ==================
 
-The following section characterizes the sequencing results.
+The following section characterizes sequencing results. Specifically, we
+evaluate the number of mapped reads for on and off-target loci, allele
+read balance, and the density of targeted RAD loci across the genome.
 
 ### On/off target reads per locus
 
-The number of mapped read pairs for RAD loci targeted with rapture
+The number of mapped read pairs for RAD loci targeted with RAPTURE
 (On\_Target) versus RAD loci that were not targeted (Off\_Target).
-Overall, 80.6% of reads aligned to targeted loci even though they only
-made up less than 10% of all RAD loci.
+Overall, 80.6% of reads aligned to targeted loci even though they made
+up less than 10% of all RAD loci. Results demonstrate that the target
+enrichment assay was highly successful.
 
     p <- ggplot(onTarget_readCount, aes(x=ReadCount, fill = T)) +
       geom_histogram(binwidth = 10000, color = "black") +
@@ -87,11 +90,16 @@ made up less than 10% of all RAD loci.
 
 ### Allele balance
 
-Allele read balance (AB) calculated for all SNPs in manuscript Table 1.
+Allele balance (AB) calculated for all SNPs in manuscript Table 1.
 Allele balance is the proportion of reads supporting the reference
-allele for heterozygous genotypes at a given locus. We expect values to
-be near 0.5 for diploid loci that are not confounded by sequencing or
-mapping errors.
+allele for heterozygous genotypes at a given locus (reported by
+Freebayes). We expect values to be near 0.5 for diploid loci that are
+not confounded by sequencing or mapping errors. We see that the
+distribution of AB is centered on 0.5 and that the vast majority of SNPs
+have values ranging from 0.25 to 0.75. At a small subset of loci, there
+appears to be a bias toward sequencing the alternate allele (AB &lt;
+0.25); however, these loci make up a small fraction of all genotyped
+SNPs.
 
     s1 <- subset(appendixLoci, allele_balance < 0.7)
     s2 <- subset(s1, allele_balance > 0.3)
@@ -110,10 +118,39 @@ mapping errors.
 
 <img src="README_files/figure-markdown_strict/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
 
+### Chromosome plots
+
+#### Greater than 10 mb
+
+Distribution of target RAD loci across the 44 largest scaffolds (&gt;10
+mb) in the sea lamprey genome. Each horizontal black line represents a
+scaffold and each vertical blue line represents the location of a
+targeted RAD locus. A total of 2844 of 3446 targeted loci map to these
+scaffolds (82.5%).
+
+    dat45 <- subset(targets.chrpos, targets.chrpos$CHR < 45)
+    chrompos <- prepareGenomePlot(dat45, cols = "grey50", paintCytobands = TRUE, bleach = 0, topspace = 1, cex = 2, sexChromosomes = FALSE)
+    points(chrompos[,2],chrompos[,1]+0.05,pch="|", cex = 0.75, col="deepskyblue4")
+
+<img src="README_files/figure-markdown_strict/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+
+#### Greater than 1 mb
+
+Distribution of target RAD loci on scaffolds greater than 1 MB in
+length. Each horizontal black line represents a scaffold and each
+vertical blue line represents the location of a targeted locus. A total
+of 3316 of 3446 targeted RAD loci map to these scaffolds (96.22%).
+
+    dat106 <- subset(targets.chrpos, targets.chrpos$CHR < 106)
+    chrompos <- prepareGenomePlot(dat106, cols = "grey50", paintCytobands = TRUE, bleach = 0, topspace = 1, cex = 2, sexChromosomes = FALSE)
+    points(chrompos[,2],chrompos[,1]+0.05,pch="|", cex = 0.75, col="deepskyblue4")
+
+<img src="README_files/figure-markdown_strict/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+
 ### Target density
 
-The mean density of targeted loci across these scaffolds was 4.02 RAD
-loci per mega-base (SD = 1.30)
+The mean density of targeted loci across scaffolds &gt;10MB in length
+was 4.02 RAD loci per mega-base (SD = 1.30)
 
     data <- subset(targetDensity, chr_length > 10000000)
     mn <- mean(data$density)
@@ -131,54 +168,29 @@ loci per mega-base (SD = 1.30)
             text = element_text(size=14),
             axis.text.x = element_text(angle=0, hjust=1))
 
-<img src="README_files/figure-markdown_strict/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
-
-### Chromosome plots
-
-#### Greater than 10 mb
-
-Distribution of target RAD loci across the 44 largest scaffolds (&gt;10
-mb) in the sea lamprey genome. Each horizontal black line represents a
-scaffold and each vertical blue line represents the location of a
-targeted locus. A total of 2844 of 3446 targeted loci map to these
-scaffolds (82.5%).
-
-    dat45 <- subset(targets.chrpos, targets.chrpos$CHR < 45)
-    chrompos <- prepareGenomePlot(dat45, cols = "grey50", paintCytobands = TRUE, bleach = 0, topspace = 1, cex = 2, sexChromosomes = FALSE)
-    points(chrompos[,2],chrompos[,1]+0.05,pch="|", cex = 0.75, col="deepskyblue4")
-
-<img src="README_files/figure-markdown_strict/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
-
-#### Greater than 1 mb
-
-Distribution of target RAD loci across 100 scaffolds greater than 1 MB
-in length. Each horizontal black line represents a scaffold and each
-vertical blue line represents the location of a targeted locus. A total
-of 3316 of 3446 targeted loci map to these scaffolds (96.22%).
-
-    dat106 <- subset(targets.chrpos, targets.chrpos$CHR < 106)
-    chrompos <- prepareGenomePlot(dat106, cols = "grey50", paintCytobands = TRUE, bleach = 0, topspace = 1, cex = 2, sexChromosomes = FALSE)
-    points(chrompos[,2],chrompos[,1]+0.05,pch="|", cex = 0.75, col="deepskyblue4")
-
 <img src="README_files/figure-markdown_strict/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
 
 Genetic variation
 =================
 
-The following section characterizes the genetic variation detected using
-the bait panel
+The following section characterizes inter and intra-population genetic
+variation at SNP loci that were genotyped using RAPTURE. We first
+generate a plot of *F*<sub>ST</sub>, then produce histograms of minor
+allele frequency and *F*<sub>IS</sub> for each of 5 sampling locations.
+We then detect loci putatively under selection using the “Outflank”
+method (Whitlock and Lotterhos, 2015)
 
 ### Histogram of *F*<sub>ST</sub> values per locus
 
-Distribution of *F*<sub>ST</sub> values for 11,970 SNP loci genotyped in
+Distribution of *F*<sub>ST</sub> values for 11,818 SNP loci genotyped in
 sea lamprey at five spawning sites. The dashed vertical line indicates
 the mean *F*<sub>ST</sub> value.
 
-    dat.fst <- appendixLoci %>% drop_na(fst_nei73_heirfstat)
-    Fst <- dat.fst$fst_nei73_heirfstat
+    dat.fst <- appendixLoci %>% drop_na(Fst)
+    Fst <- dat.fst$Fst
     mf <- mean(Fst)
 
-    p <- ggplot(dat.fst, aes(x=fst_nei73_heirfstat)) +
+    p <- ggplot(dat.fst, aes(x=Fst)) +
       geom_histogram(fill="deepskyblue3",color = "black", binwidth = 0.01) +
       geom_vline(xintercept = mf, linetype = "dashed")
 
@@ -194,13 +206,13 @@ the mean *F*<sub>ST</sub> value.
 ### *F*<sub>IS</sub> values per locus, per population
 
 Distributions of *F*<sub>IS</sub> generally centered around zero for
-11,970 SNP loci genotyped in sea lamprey at five spawning sites.
+11,818 SNP loci genotyped in sea lamprey at five spawning sites.
 
     CARP <- as.data.frame(cbind(appendixLoci$Fis_CARP, rep(x = "CARP", nrow(appendixLoci))))
     BR <- as.data.frame(cbind(appendixLoci$Fis_BR, rep(x = "BR", nrow(appendixLoci))))
     SC <- as.data.frame(cbind(appendixLoci$Fis_SC, rep(x = "SC", nrow(appendixLoci))))
     SM <- as.data.frame(cbind(appendixLoci$Fis_SM, rep(x = "SM", nrow(appendixLoci))))
-    DCJ <- as.data.frame(cbind(appendixLoci$Fis_DCJ, rep(x = "DCJ", nrow(appendixLoci))))
+    DCJ <- as.data.frame(cbind(appendixLoci$Fis_DUFFINS, rep(x = "DCJ", nrow(appendixLoci))))
 
     names(CARP) <- c("Fis", "Pop")
     names(BR) <- c("Fis", "Pop")
@@ -227,14 +239,14 @@ Distributions of *F*<sub>IS</sub> generally centered around zero for
 
 ### Minor allele frequencies per locus, per population
 
-Distributions of minor allele frequencies for 11,970 SNP loci genotyped
-in sea lamprey at five spawning sites varied among populations.
+Distributions of minor allele frequencies for 11,818 SNP loci genotyped
+in sea lamprey at five spawning sites.
 
     CARP <- as.data.frame(cbind(appendixLoci$MAF_CARP, rep(x = "CARP", nrow(appendixLoci))))
     BR <- as.data.frame(cbind(appendixLoci$MAF_BR, rep(x = "BR", nrow(appendixLoci))))
     SC <- as.data.frame(cbind(appendixLoci$MAF_SC, rep(x = "SC", nrow(appendixLoci))))
     SM <- as.data.frame(cbind(appendixLoci$MAF_SM, rep(x = "SM", nrow(appendixLoci))))
-    DCJ <- as.data.frame(cbind(appendixLoci$MAF_DCJ, rep(x = "DCJ", nrow(appendixLoci))))
+    DCJ <- as.data.frame(cbind(appendixLoci$MAF_DUFFINS, rep(x = "DCJ", nrow(appendixLoci))))
 
     names(CARP) <- c("MAF", "Pop")
     names(BR) <- c("MAF", "Pop")
@@ -265,7 +277,10 @@ Outlier analysis
 
 We performed an outlier analysis using OutFLANK (Whitlock & Lotterhos,
 2015). A more comprehensively annotated version of this script is
-available at /analysis/outlierAnalysis.R
+available at /analysis/outlierAnalysis.R. The analysis identified 10
+loci putatively under selection. Evaluation of the DAPC loadings
+demonstrates that these loci contribute disproportionately to LD1, which
+separates Duffin’s Creek from upper Great Lakes populations.
 
     dat <- genotypeToSnpMatrix(allLoci.vcf, uncertain=FALSE)
     dat1 <- as.data.frame(dat$genotypes@.Data)
@@ -286,7 +301,7 @@ available at /analysis/outlierAnalysis.R
     FstDataFrame1 <- MakeDiploidFSTMat(genotype, locinames, ind)
 
     ## Calculating FSTs, may take a few minutes...
-    ## [1] "10000 done of 12435"
+    ## [1] "10000 done of 11818"
 
     out_trim <- OutFLANK(FstDataFrame1, NumberOfSamples=140, qthreshold = 0.1, Hmin = 0.1)
 
