@@ -28,7 +28,8 @@ version 3.5.1 in Windows 10
 <br> Contact <br> Nick M. Sard <br> <nicholas.sard@oswego.edu> <br>
 www.oswego.edu/biological-sciences/content/nicholas-m-sard
 
-Jared J. Homola <br> <jaredhomola20@gmail.com> <br> www.jaredhomola.com
+<br> Jared J. Homola <br> <jaredhomola20@gmail.com> <br>
+www.jaredhomola.com
 
 #### Copyright (c) 2019 ScribnerLab
 
