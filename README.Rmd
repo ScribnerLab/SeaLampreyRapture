@@ -28,9 +28,10 @@ library(devtools)
 install_github("ScribnerLab/SeaLampreyRapture")
 ```
 
+![OutlineFigure](compendiumOutline.png)
 
 
-#### Contact <br>
+#### Contact
 Nick M. Sard  <br>
 nicholas.sard@oswego.edu  <br> 
 www.oswego.edu/biological-sciences/content/nicholas-m-sard <br>
