@@ -31,7 +31,7 @@ install_github("ScribnerLab/SeaLampreyRapture")
 
 <center> <img src="./extData/compendiumOutline.png" width="700" height="9000"> </center>
 
-
+<br>
 #### Contact <br>
 Nick M. Sard  <br>
 nicholas.sard@oswego.edu  <br> 
