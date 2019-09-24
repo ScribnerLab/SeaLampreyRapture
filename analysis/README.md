@@ -26,7 +26,7 @@ developed for sea lamprey management and research. The input file for
 all the following analyses is appendedLoci, which is available in the
 research compendium (R package) described below.
 
-### Install SeaLampreyRapture package
+### Install SeaLampreyRapture package <a id="SeaLampreyRapture"></a>
 
 The SeaLampreyRapture package includes all data necessary for performing
 the following analyses. It can be download from GitHub using the
@@ -58,8 +58,8 @@ packages are available
 
 <br> <br>
 
-Sequencing profile {\#SeqProfile} <a id="Packages"></a>
-=======================================================
+Sequencing profile <a id="SeqProfile"></a>
+==========================================
 
 The following section characterizes sequencing results. Specifically, we
 evaluate the number of mapped reads for on and off-target loci, allele

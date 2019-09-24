@@ -33,7 +33,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 RAD capture (RAPTURE) provides a means of rapidly genotyping hundreds to thousands of standardized restriction site associated (RAD) loci. Here we provide a detailed characterization of a panel of 12,435 RAD loci developed for sea lamprey management and research. The input file for all the following analyses is appendedLoci, which is available in the research compendium (R package) described below.
 
-### Install SeaLampreyRapture package {#SeaLampreyRapture}
+### Install SeaLampreyRapture package  <a id="SeaLampreyRapture"></a>
 The SeaLampreyRapture package includes all data necessary for performing the following analyses. It can be download from GitHub using the following R commands.
 
 ```{r, eval = FALSE}
@@ -64,7 +64,7 @@ data(SeaLampreyRapture)
 <br>
 <br>
 
-# Sequencing profile {#SeqProfile} <a id="Packages"></a>
+# Sequencing profile  <a id="SeqProfile"></a>
 The following section characterizes sequencing results. Specifically, we evaluate the number of mapped reads for on and off-target loci, allele read balance, and the density of targeted RAD loci across the genome.
 
 ### On/off target reads per locus <a id="Target"></a>
