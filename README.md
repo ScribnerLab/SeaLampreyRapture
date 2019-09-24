@@ -1,6 +1,8 @@
 Sea Lamprey Rapture
 ===================
 
+[![DOI](https://zenodo.org/badge/194438082.svg)](https://zenodo.org/badge/latestdoi/194438082)
+
 SeaLampreyRapture is a research compendium that brings together the data
 and analyses associated with *Sard et al. 2019. Rapture (RAD capture)
 panel facilitates analyses characterizing sea lamprey reproductive
