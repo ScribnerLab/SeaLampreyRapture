@@ -2,9 +2,9 @@ Sea Lamprey Rapture
 ===================
 
 SeaLampreyRapture is a research compendium that brings together the data
-and analyses associated with Sard et al. 2019. Rapture (RAD capture)
+and analyses associated with *Sard et al. 2019. Rapture (RAD capture)
 panel facilitates analyses characterizing sea lamprey reproductive
-ecology and movement dynamics, Ecology and Evolution.
+ecology and movement dynamics, Ecology and Evolution.*
 
 R analysis scripts are provided in analysis/, R source scripts are in
 src/, human-readable data in extData/, and R-readable data in an .rda

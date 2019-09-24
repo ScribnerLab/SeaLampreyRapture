@@ -146,7 +146,7 @@ p + ggtitle("") +
 ```
 
 
-# Genetic variation {#GenVar}
+# Genetic variation {#GenVar}  <a id="GenVar"></a>
 The following section characterizes inter and intra-population genetic variation at SNP loci that were genotyped using RAPTURE. We first generate a plot of *F*~ST~, then produce histograms of minor allele frequency and *F*~IS~ for each of 5 sampling locations.  We then detect loci putatively under selection using the “Outflank” method (Whitlock and Lotterhos, 2015)
 
 ### Histogram of *F*~ST~ values per locus {#Fst}

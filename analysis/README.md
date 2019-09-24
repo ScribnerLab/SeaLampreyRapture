@@ -170,8 +170,8 @@ was 4.02 RAD loci per mega-base (SD = 1.30)
 
 <img src="README_files/figure-markdown_strict/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
 
-Genetic variation
-=================
+Genetic variation {\#GenVar} <a id="GenVar"></a>
+================================================
 
 The following section characterizes inter and intra-population genetic
 variation at SNP loci that were genotyped using RAPTURE. We first
