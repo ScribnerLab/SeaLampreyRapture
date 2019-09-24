@@ -16,8 +16,8 @@ Contents
 -   [Outlier analysis](#Outlier)
     -   [Outlier locus summary table](#outlierSummary)
 
-Introduction and Setup
-----------------------
+Introduction and Setup <a id="Introduction"></a>
+------------------------------------------------
 
 RAD capture (RAPTURE) provides a means of rapidly genotyping hundreds to
 thousands of standardized restriction site associated (RAD) loci. Here
@@ -37,7 +37,7 @@ following R commands.
     library(devtools)
     install_github("ScribnerLab/SeaLampreyRapture")
 
-### Load required packages
+### Load required packages <a id="Packages"></a>
 
 Interactively run /analysis/installPackages.R to ensure all necessary
 packages are available
@@ -58,14 +58,14 @@ packages are available
 
 <br> <br>
 
-Sequencing profile
-==================
+Sequencing profile {\#SeqProfile} <a id="Packages"></a>
+=======================================================
 
 The following section characterizes sequencing results. Specifically, we
 evaluate the number of mapped reads for on and off-target loci, allele
 read balance, and the density of targeted RAD loci across the genome.
 
-### On/off target reads per locus
+### On/off target reads per locus <a id="Target"></a>
 
 The number of mapped read pairs for RAD loci targeted with RAPTURE
 (On\_Target) versus RAD loci that were not targeted (Off\_Target).
@@ -88,7 +88,7 @@ enrichment assay was highly successful.
 
 <img src="README_files/figure-markdown_strict/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
 
-### Allele balance
+### Allele balance <a id="AlleleBalance"></a>
 
 Allele balance (AB) calculated for all SNPs in manuscript Table 1.
 Allele balance is the proportion of reads supporting the reference
@@ -118,7 +118,7 @@ SNPs.
 
 <img src="README_files/figure-markdown_strict/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
 
-### Chromosome plots
+### Chromosome plots <a id="Chromo"></a>
 
 #### Greater than 10 mb
 
@@ -147,7 +147,7 @@ of 3316 of 3446 targeted RAD loci map to these scaffolds (96.22%).
 
 <img src="README_files/figure-markdown_strict/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
-### Target density
+### Target density <a id="TargetDensity"></a>
 
 The mean density of targeted loci across scaffolds &gt;10MB in length
 was 4.02 RAD loci per mega-base (SD = 1.30)
@@ -170,8 +170,8 @@ was 4.02 RAD loci per mega-base (SD = 1.30)
 
 <img src="README_files/figure-markdown_strict/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
 
-Genetic variation {\#GenVar} <a id="GenVar"></a>
-================================================
+Genetic variation <a id="GenVar"></a>
+=====================================
 
 The following section characterizes inter and intra-population genetic
 variation at SNP loci that were genotyped using RAPTURE. We first
@@ -180,7 +180,7 @@ allele frequency and *F*<sub>IS</sub> for each of 5 sampling locations.
 We then detect loci putatively under selection using the “Outflank”
 method (Whitlock and Lotterhos, 2015)
 
-### Histogram of *F*<sub>ST</sub> values per locus
+### Histogram of *F*<sub>ST</sub> values per locus <a id="Fst"></a>
 
 Distribution of *F*<sub>ST</sub> values for 11,818 SNP loci genotyped in
 sea lamprey at five spawning sites. The dashed vertical line indicates
@@ -203,7 +203,7 @@ the mean *F*<sub>ST</sub> value.
 
 <img src="README_files/figure-markdown_strict/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
 
-### *F*<sub>IS</sub> values per locus, per population
+### *F*<sub>IS</sub> values per locus, per population <a id="Fis"></a>
 
 Distributions of *F*<sub>IS</sub> generally centered around zero for
 11,818 SNP loci genotyped in sea lamprey at five spawning sites.
@@ -237,7 +237,7 @@ Distributions of *F*<sub>IS</sub> generally centered around zero for
 
 <img src="README_files/figure-markdown_strict/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
 
-### Minor allele frequencies per locus, per population
+### Minor allele frequencies per locus, per population <a id="MAF"></a>
 
 Distributions of minor allele frequencies for 11,818 SNP loci genotyped
 in sea lamprey at five spawning sites.
@@ -272,8 +272,8 @@ in sea lamprey at five spawning sites.
 
 <img src="README_files/figure-markdown_strict/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
 
-Outlier analysis
-================
+Outlier analysis <a id="Outlier"></a>
+=====================================
 
 We performed an outlier analysis using OutFLANK (Whitlock & Lotterhos,
 2015). A more comprehensively annotated version of this script is
