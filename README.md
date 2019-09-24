@@ -22,11 +22,9 @@ version 3.5.1 in Windows 10
     library(devtools)
     install_github("ScribnerLab/SeaLampreyRapture")
 
-<center>
-<img src="./extData/compendiumOutline.png" width="700" height="9000">
-</center>
-</html>
-Contact <br> Nick M. Sard <br> <nicholas.sard@oswego.edu> <br>
+#### Contact <br>
+
+Nick M. Sard <br> <nicholas.sard@oswego.edu> <br>
 www.oswego.edu/biological-sciences/content/nicholas-m-sard <br>
 
 Jared J. Homola <br> <jaredhomola20@gmail.com> <br> www.jaredhomola.com
