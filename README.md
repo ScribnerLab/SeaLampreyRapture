@@ -2,13 +2,15 @@ Sea Lamprey Rapture
 ===================
 
 SeaLampreyRapture is a research compendium that brings together the data
-and analyses associated with Sard et al. (in review). R analysis scripts
-are provided in analysis/, R source scripts are in src/, human-readable
-data in extData/, and R-readable data in an .rda file in data/.
+and analyses associated with Sard et al. 2019. Rapture (RAD capture)
+panel facilitates analyses characterizing sea lamprey reproductive
+ecology and movement dynamics, Ecology and Evolution.
 
-Detailed quantiative descriptions of the results of sea lamprey RAPTURE
-sequencing is available as an R Markdown file and in the README in
-/analysis.
+R analysis scripts are provided in analysis/, R source scripts are in
+src/, human-readable data in extData/, and R-readable data in an .rda
+file in data/. Detailed quantitative descriptions of the results of sea
+lamprey RAPTURE sequencing is available as an R Markdown file and in the
+README in /analysis.
 
 Note: All analyses originally conducted and package built using R
 version 3.5.1 in Windows 10
@@ -23,9 +25,7 @@ version 3.5.1 in Windows 10
 <center>
 <img src="./extData/compendiumOutline.png" width="700" height="9000">
 </center>
-### Contact
-
-Nick M. Sard  
+Contact Nick M. Sard  
 <nicholas.sard@oswego.edu>  
 www.oswego.edu/biological-sciences/content/nicholas-m-sard
 
@@ -33,7 +33,7 @@ Jared J. Homola
 <jaredhomola20@gmail.com>  
 www.jaredhomola.com
 
-#### Copyright (c) 2019
+#### Copyright (c) 2019 ScribnerLab
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the

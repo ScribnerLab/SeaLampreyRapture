@@ -90,11 +90,18 @@ MAF.tib %>%
 gd.tib <- Hobs.tib %>%
   left_join(Hexp.tib) %>%
   left_join(Fis.tib) %>%
-  left_join(MAF.tib)
+  left_join(MAF.tib) %>%
+  as.tibble()
+
+pop.gd <- gd.tib %>%
+  group_by(Subpop) %>%
+  summarize(mean.Hobs = mean(Hobs), mean.Hexp = mean(Hexp), mean.Fis = mean(Fis, na.rm = TRUE), mean.MAF = mean(MAF))
 
 #write.csv(gd.tib, "gd.tib.csv")
 
 #### Pairwise Fsts for all unrelated lamprey ####
-pairwise.fsts <- pairwise_Gst_Nei(dat.genind, linearized = FALSE)
-global.fst <- diff_stats(dat.genind)
 loci.fst <- Gst_Nei(dat.genind)
+global.fst <- diff_stats(dat.genind)
+
+dat.genind@pop <- indPops$Age
+pairwise.fsts <- pairwise_Gst_Nei(dat.genind, linearized = FALSE)
