@@ -4,8 +4,8 @@ author: "Jared J. Homola"
 date: "June 29, 2019"
 output:
   md_document: default
-html_document: default
-pdf_document: default
+  pdf_document: default
+  html_document: default
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -30,18 +30,6 @@ install_github("ScribnerLab/SeaLampreyRapture")
 
 
 <center> <img src="./extData/compendiumOutline.png" width="700" height="9000"> </center>
-
-
-<br>
-Contact <br>
-Nick M. Sard  <br>
-nicholas.sard@oswego.edu  <br> 
-www.oswego.edu/biological-sciences/content/nicholas-m-sard
-
-<br>
-Jared J. Homola  <br>
-jaredhomola20@gmail.com <br> 
-www.jaredhomola.com  
 
 
 #### Copyright (c) 2019 ScribnerLab
